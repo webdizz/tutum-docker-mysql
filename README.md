@@ -14,6 +14,12 @@ To create the image `tutum/mysql`, execute the following command on the tutum-my
 To run the image and bind to port 3306:
 
 	docker run -d -p 3306:3306 tutum/mysql
+	
+To run the image and bind to port 3306 and specify password for SSH:
+
+	docker run -d -p 3306:3306 -p 22:2222 -e ROOT_PASS="root_password" tutum/mysql	
+	
+Now you can log in ssh -p 2222 root@localhost	
 
 The first time that you run your container, a new user `admin` with all privileges 
 will be created in MySQL with a random password. To get the password, check the logs
@@ -103,3 +109,5 @@ Environment variables
 `MYSQL_PASS`: Set a specific password for the admin account.
 
 `MYSQL_ADMIN_CREATED`: When setting this environment to any value, MySQL container will NOT create admin user and its password.
+
+`ROOT_PASS`: Set a specific password for the root system account.
