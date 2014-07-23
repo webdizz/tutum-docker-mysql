@@ -17,7 +17,7 @@ To run the image and bind to port 3306:
 	
 To run the image and bind to port 3306 and specify password for SSH:
 
-	docker run -d -p 3306:3306 -p 22:2222 -e ROOT_PASS="root_password" tutum/mysql	
+	docker run -d -p 3306:3306 -p 2222:22 -e ROOT_PASS="root_password" tutum/mysql	
 	
 Now you can log in ssh -p 2222 root@localhost	
 
