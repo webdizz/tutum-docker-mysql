@@ -21,6 +21,19 @@ echo "=> Creating MySQL admin user with ${_word} password"
 mysql -uroot -e "CREATE USER 'admin'@'%' IDENTIFIED BY '$PASS'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION"
 
+
+if [ ! -f "$SQL_FILE" ]; then
+    echo '=======================================';
+    echo 'There is no necessity to execute script';
+    echo '=======================================';
+else
+    echo '=======================================';
+    echo 'Is about to execute file';
+    mysql -uadmin -p$PASS < $SQL_FILE;
+    echo '=======================================';
+fi
+
+
 mysqladmin -uroot shutdown
 
 echo "=> Done!"
